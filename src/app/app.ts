@@ -11,3 +11,5 @@ import { Header } from "./core/header/header";
 export class App {
   protected readonly title = signal('loja-tp1-angular');
 }
+
+//Testando GIT
