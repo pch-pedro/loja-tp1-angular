@@ -47,6 +47,7 @@
 .preco {
     font-weight: 700;
     color: #111827;
+    margin-right: 8px;
 }
 
 .preco-container {
@@ -128,6 +129,12 @@
 .selo.esgotado {
     background: #fef2f2;
     color: #991b1b;
+    border-color: #fecaca;
+}
+
+.selo.usado {
+    background: #dacd58;
+    color: #000000;
     border-color: #fecaca;
 }
 

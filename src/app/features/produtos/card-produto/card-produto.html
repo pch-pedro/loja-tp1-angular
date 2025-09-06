@@ -12,6 +12,10 @@
                 @case('esgotado'){
                     <span class="selo esgotado">Esgotado</span>
                 }
+
+                @case('usado'){
+                    <span class="selo usado">Usado</span>
+                }
             }
             
             @if(produto().promo){
@@ -21,10 +25,25 @@
 
         <p class="desc">{{produto().descricao}}</p>
 
-        <div class="linhapreco">
-            <span class="preco">{{produto().preco | currency: 'BRL' : 'symbol': '1.2-2'}}</span>
+        <div class="precocontainer">
+            @if (produto().promo) {
+                <span class="preco desconto">
+                    {{produto().preco | desconto:10 | currency: 'BRL' : 'symbol': '1.2-2'}}
+                </span>
+                <span class="preco original">
+                    {{produto().preco | currency: 'BRL' : 'symbol': '1.2-2'}}
+                </span>
+            }
+            @else {
+                <span class="preco">{{produto().preco | currency: 'BRL' : 'symbol': '1.2-2'}}</span>
+            }
             <app-quantidade-controle [(contador)]="qtde"></app-quantidade-controle>
         </div>
+
+        <!--<div class="linhapreco">
+            <span class="preco">{{produto().preco | currency: 'BRL' : 'symbol': '1.2-2'}}</span>
+            <app-quantidade-controle [(contador)]="qtde"></app-quantidade-controle>
+        </div>-->
 
         <div class="acoes">
             <button class="btn ghost" (click)="onView()">Detalhes</button>

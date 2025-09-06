@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Produto } from '../../../model/produto';
 import { CardProduto } from "../card-produto/card-produto";
 
@@ -36,6 +36,14 @@ export class ListaProdutos {
       estado: 'esgotado'
     }
   ]
+
+  apenasPromo = signal(false);
+
+  prodExibidos = computed(() => this.apenasPromo() ? this.produtos.filter(p => p.promo): this.produtos);
+
+  alterarPromo(){
+    this.apenasPromo.update(p => !p);
+  }
 
   onAddProduct(produto: {id: number, quantity: number}){
     alert(`Produto ${produto.id}, ${produto.quantity} unidades`);
