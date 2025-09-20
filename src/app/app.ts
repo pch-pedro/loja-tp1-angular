@@ -11,7 +11,7 @@ import { ListaProdutos } from "./features/produtos/lista-produtos/lista-produtos
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Footer, Banner, ListaProdutos],
+  imports: [Header, Footer, Banner, ListaProdutos, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
