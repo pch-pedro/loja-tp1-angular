@@ -15,6 +15,7 @@ export class ListaProdutos {
 
   private produtoService = inject(ProdutoService);
   private router = inject(Router);
+  loading = signal(true);
 
   private produtos = toSignal<Produto[], Produto[]>(this.produtoService.listar(), {initialValue: []});
 
