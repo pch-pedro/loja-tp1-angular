@@ -10,7 +10,10 @@
             }
         </button>
     </header>
-    @if(prodExibidos().length == 0){
+    @if(loading()){
+        <p>Carregando produtos...</p> <!-- Circular Progress Bar-->
+    }
+    @else if(prodExibidos().length == 0){
         <p class="vazio">Nenhum produto encontrado para o filto atual</p>
     }
     @else{
