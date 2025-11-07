@@ -14,5 +14,5 @@ jobs:
           node-version: 22.
       - name: run install and build
         run: |
-          npm intall
+          npm install
           npm run build
