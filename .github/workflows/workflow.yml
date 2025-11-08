@@ -1,4 +1,4 @@
-#
+#Definino 
 name: CI/CD
 
 on: [pull_request, push]
@@ -16,7 +16,7 @@ jobs:
       - name: run install and build
         run: |
           npm install
-          npm run build
+          npm run build -- --configuration production
       - name: Disparar Vercel
         run: |
           curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_skoB6VJAIVsWxNzHyhKgd1R7Qwqa/6LXRwHOo56
