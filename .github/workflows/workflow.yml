@@ -1,22 +1,50 @@
-#Definino 
+#Definindo o nome do nosso Workflow
 name: CI/CD
 
+#Definindo o evento que irá ativar o workflow
 on: [pull_request, push]
 
+#Definindo os passos que o workflow irá fazer para concluir o trabalho
 jobs:
+
+  #Definindo um nome para o trabalho que contém os passos a serem seguidos
   continuos-integration:
+
+    #Definindo qual sistema da máquina virtual do GitHub Actions irá utilizar
     runs-on: ubuntu-latest
 
+    #Definindo os passos que serão executados pela máquina virtual
     steps:
+      
+        #A action checkout serve para pegar o código que está sendo trabalhado para fazer um pull request na main
       - uses: actions/checkout@v5
+
+        #Definindo o nome do próximo passo
       - name: Using Node.js
+
+        #Usando uma action para realizar a instalação do Node.js
         uses: actions/setup-node@v6
+
+        #Definindo a versão do Node que desejamos utilizar
         with:
           node-version: 22.
+
+        #Definindo o nome do próximo passo
       - name: run install and build
+
+        #Definindo os comandos que desejamos utilizar. No caso desse passo,
+        #será usado o npm install para instalar as dependências do projeto,
+        # o npm run build serve para realizar a build do projeto em ambiente
+        #de produção.
         run: |
           npm install
           npm run build -- --configuration production
+
+        #Definindo o nome do último passo
       - name: Disparar Vercel
+
+        #Definindo o comando que desejamos utilizar. No caso, estou dando um deploy
+        #diretamente no Vercel para que o mesmo atualize automaticamente, puxando a última
+        #alteração feita no projeto através do github.
         run: |
           curl -X POST https://api.vercel.com/v1/integrations/deploy/prj_skoB6VJAIVsWxNzHyhKgd1R7Qwqa/6LXRwHOo56
